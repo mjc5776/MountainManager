@@ -28,12 +28,11 @@ var mountainInfo = "<tr>" +
     '<td>Mountain</td><td>14:15</td><td>Cold</td>' 
     + "</tr>";
 
-//Get Weather data form openweathermap api
+//Get Weather data from openweathermap api
     function getWeather(){
         var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
         var weatherQueryURL = "http://api.openweathermap.org/data/2.5/weather";
         var zipCode = $("#txtZipCode").val();
-        console.log("Test");
         
       $.ajax({
           url: weatherQueryURL,
@@ -72,7 +71,7 @@ var mountainInfo = "<tr>" +
         })
         .then(function (resortResponse) {
           $.each(resortResponse, function () {
-          var text = "Breckenridge";
+          var text = "Breckenridge"; //Set to Breck until dropdown is working
           var resortRow = jQuery.inArray( "e", text );
           resortRow ++;
            var liftsOpen = resortResponse.rows[resortRow].snowcone.lifts_open;
