@@ -1,0 +1,108 @@
+                   <!-- Ski app that will show traffic and weather report for ski 
+                        resorts in Denver area.  All viewed mountains important data 
+                        will show in bottom table for comparison ---------------------->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!------------ Required meta tags ------------------------------------------------->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!------------ Bootstrap CSS ------------------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!------------ Jquery CDN ----------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Mountain Manager</title>
+  </head>
+  <body>
+
+    <!------------- Dropdown menu to select mountain ----------------------------------->
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="assets/Images/MountainManager.png"/></a>                    
+            <div class="dropdown  m-auto">
+                <ul class="navbar-nav">    
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mountains
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
+                        <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
+                        <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
+                    </div>             
+                </ul>
+            </div>
+        </nav>
+        
+    <!------------- Google map -------------------------------------------------------->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-8">    
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <p class="card-text text-center"> 
+                                <img src="https://via.placeholder.com/400?text=map" class="img-fluid" alt="Responsive image">  
+                            </p>                                    
+                        </div>
+                    </div>
+                </div>
+
+    <!-------------- Weather --------------------------------------------------------->
+                <div class="col-sm-12 col-md-4">
+                    <div class="card mt-4">
+                        <div class="card-body">                  
+                            <p class="card-text text-center">
+                                <img src="https://via.placeholder.com/200x400?text=weather" class="img-fluid" alt="Responsive image">
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+    <!-------------- Recently viewed table ------------------------------------------->
+            <div class="card mt-4" id="recentlyViewedTable">
+                <div class="card-header text-dark bg-light">
+                        Recently Viewed
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mountain</th>
+                                <th scope="col">ETA</th>
+                                <th scope="col">Weather</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>              
+                                <td>Mountain</td>
+                                <td>12:50</td>
+                                <td>Fair</td>
+                            </tr>                        
+                            <tr>              
+                                <td>Mountain</td>
+                                <td>13:30</td>
+                                <td>Windy</td>
+                            </tr>
+                            <tr>              
+                                <td>Mountain</td>
+                                <td>14:15</td>
+                                <td>Cold</td>
+                            </tr>                                                   -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- Javascript, jQuery, Popper.js, Bootstrap JS ---------------------------------->
+    <script src="assets/JS/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
