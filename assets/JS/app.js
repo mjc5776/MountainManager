@@ -31,7 +31,7 @@ var mountainInfo = "<tr>" +
 //Get Weather data from openweathermap api
     function getWeather(){
         var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
-        var weatherQueryURL = "http://api.openweathermap.org/data/2.5/weather";
+        var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather";
         var zipCode = $("#txtZipCode").val();
         
       $.ajax({
