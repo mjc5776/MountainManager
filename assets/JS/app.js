@@ -84,4 +84,117 @@ var mountainInfo = "<tr>" +
         });
       };
 })
+// I don't know why this is not working in the js file.
+// This is the begining of the Google maps section.
 
+
+  // var x = document.getElementById("demo");
+   
+  //  function getLocation() {
+      
+  //      if (navigator.geolocation) {
+  //          navigator.geolocation.watchPosition(showPosition);
+  //      } else { 
+  //          x.innerHTML = "Geolocation is not supported by this browser.";}
+  //      }
+   
+  //  function showPosition(position) {
+  //      x.innerHTML="Latitude: " + position.coords.latitude + 
+  //      "<br>Longitude: " + position.coords.longitude;
+  //      var currentPosition = position;
+  //      console.log(position);
+  //    };
+        // var myCord = {lat: 39.7392, lng: -104.9903};
+        // var mtnCord = {lat: 39.6403, lng: -106.3742};
+        // function initMap(getLocation) {
+        //   var bounds = new google.maps.LatLngBounds;
+        //   var markersArray = [];
+        // //  Starting point lat/lng
+        //   var origin = myCord;
+        // //  Destination lat/lng
+        //   var destination = mtnCord;
+        // //  generates icons
+        //   var destinationIcon = "https://chart.googleapis.com/chart?" +
+        //       "chst=d_map_pin_letter&chld=D|FF0000|000000";
+        //   var originIcon = "https://chart.googleapis.com/chart?" +
+        //       "chst=d_map_pin_letter&chld=O|FFFF00|000000";
+        // // Center point lat/lng for map
+        //   var map = new google.maps.Map(document.getElementById("map"), {
+        //     center: {lat: 39.5501, lng: -105.7821},
+        //     zoom: 10
+        //   });
+          
+        //   // Shows the traffic on the map.
+        //   var trafficLayer = new google.maps.TrafficLayer();
+        //   trafficLayer.setMap(map);
+
+        //   var geocoder = new google.maps.Geocoder;
+  
+        //   var service = new google.maps.DistanceMatrixService;
+        //   service.getDistanceMatrix({
+        //     origins: [origin],
+        //     destinations: [destination],
+        //     travelMode: "DRIVING",
+        //     unitSystem: google.maps.UnitSystem.METRIC,
+        //     avoidHighways: false,
+        //     avoidTolls: false
+        //   }, function(response, status) {
+        //     if (status !== "OK") {
+        //       alert("Error was: " + status);
+        //     } else {
+        //       var originList = response.originAddresses;
+        //       var destinationList = response.destinationAddresses;
+        //       var outputDiv = document.getElementById("output");
+        //       outputDiv.innerHTML = "";
+        //       deleteMarkers(markersArray);
+  
+        //       var showGeocodedAddressOnMap = function(asDestination) {
+        //         var icon = asDestination ? destinationIcon : originIcon;
+        //         return function(results, status) {
+        //           if (status === "OK") {
+        //             map.fitBounds(bounds.extend(results[0].geometry.location));
+        //             markersArray.push(new google.maps.Marker({
+        //               map: map,
+        //               position: results[0].geometry.location,
+        //               icon: icon
+        //             }));
+        //           } else {
+        //             alert("Geocode was not successful due to: " + status);
+        //           }
+        //         };
+        //       };
+  
+        //       for (var i = 0; i < originList.length; i++) {
+        //         var results = response.rows[i].elements;
+        //         geocoder.geocode({"address": originList[i]},
+        //             showGeocodedAddressOnMap(false));
+        //         for (var j = 0; j < results.length; j++) {
+        //           geocoder.geocode({"address": destinationList[j]},
+        //               showGeocodedAddressOnMap(true));
+        //           outputDiv.innerHTML += originList[i] + " to " + destinationList[j] +
+        //               ": " + results[j].distance.text + " in " +
+        //               results[j].duration.text + "<br>";
+        //         }
+        //       }
+        //     }
+        //   });
+        // }
+  
+        // function deleteMarkers(markersArray) {
+        //   for (var i = 0; i < markersArray.length; i++) {
+        //     markersArray[i].setMap(null);
+        //   }
+        //   markersArray = [];
+        // }
+        
+        // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHzWlw-oxprYIXqfQALfy0P7bUMFjmyoA&callback=initMap"
+        
+        
+      
+        
+      
+     
+    
+  
+   
+    

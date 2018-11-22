@@ -12,4 +12,10 @@
 
    .container{
        opacity:0.9;
+       
    }
+
+   #map {
+    height: 400px;
+    width: 720px;
+  }
