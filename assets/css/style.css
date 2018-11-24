@@ -10,12 +10,12 @@
       z-index: -100;
     }
 
-   .container{
+  .container{
        opacity:0.9;
        
    }
 
-   #map {
+  #map {
     height: 400px;
-    width: 720px;
+    width: 690px;
   }

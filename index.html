@@ -41,29 +41,26 @@
             </ul>
         </div>
     </nav>
-
+   
     <!------------- Google map -------------------------------------------------------->
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-8">
                 <div class="card mt-4">
-                    <div class="card-body">
-                        <p class="card-text text-center">
-                                <div id="output"></div>
-                            </div>
-                            <!-- <button onclick="getLocation()">Get location</button> -->
-                            <p id="demo"></p>  
+                   <div class="card-body">
+                         <p class="card-text text-center"> 
+                            <div id="output"></div>
+                            <p id="demo"></p>
                             <div id="map"></div>
-                            <!--  <img src="https://via.placeholder.com/400?text=map" class="img-fluid" alt="Responsive image"> -->
-                            
-                            
                         </p>
                     </div>
                 </div>
             </div>
             <script>
         // I can only make this work in the html file for some reason.
+        // This is the location for Denver.
             var myCord = {lat: 39.7392, lng: -104.9903};
+        // This is the location for Vail.
             var mtnCord = {lat: 39.6403, lng: -106.3742};
             function initMap(getLocation) {
               var bounds = new google.maps.LatLngBounds;
@@ -88,7 +85,7 @@
               trafficLayer.setMap(map);
     
               var geocoder = new google.maps.Geocoder;
-      
+            // This code gets the distance and mode of travel.
               var service = new google.maps.DistanceMatrixService;
               service.getDistanceMatrix({
                 origins: [origin],
