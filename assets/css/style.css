@@ -13,3 +13,18 @@
    .container{
        opacity:0.9;
    }
+
+   .navbar{
+    
+   }
+
+   .img-theme{
+    width: 100%;
+    height: auto;
+    
+  }
+
+  .btn{
+      color: white;
+      background-color: blue;
+  }
