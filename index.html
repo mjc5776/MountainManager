@@ -15,31 +15,31 @@
         crossorigin="anonymous">
     <!------------ Jquery CDN ----------------------------------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     <!-------------CSS---------------------------------------------------------------------->
-     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-------------CSS---------------------------------------------------------------------->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Mountain Manager</title>
 </head>
 
 <body>
-    
+    <header>
+        <img class="img-theme" src="assets/Images/MMHeader.png" />
+    </header>
+
     <!------------- Dropdown menu to select mountain ----------------------------------->
     <nav class="navbar navbar-expand navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="assets/Images/MountainManager.png" /></a>
-     <!--Added a zip code text box for testing weather and resort data-->   
-        <input type="text" class="form-control" placeholder="Enter a Zip Code" id=txtZipCode>   
-        <div class="dropdown  m-auto">
-            <ul class="navbar-nav">
+        <div id="container">
+            <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Mountains
+                    Colorado Resorts
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
-                    <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
-                    <button class="dropdown-item" type="button" id="mountainSelector">Mountain</button>
+                    <!-- <button class="dropdown-item" type="button">Action</button> -->
                 </div>
-            </ul>
+            </div>
+            <div id="resort"></div>
         </div>
+
     </nav>
 
     <!------------- Google map -------------------------------------------------------->
@@ -144,7 +144,7 @@
         </div>
     </div>
     <video autoplay loop id="video-background" muted plays-inline>
-            <source src="../MountainManager/assets/video/ski_resort.mp4">
+        <source src="../MountainManager/assets/video/ski_resort.mp4">
     </video>
 
 
@@ -155,6 +155,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 </body>
 
 </html>
