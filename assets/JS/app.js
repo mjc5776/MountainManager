@@ -4,6 +4,8 @@ $(document).ready(function () {
 
   //Hides table from view until user selects a mountain
   $("#recentlyViewedTable").hide();
+  $("#weatherCard").hide();
+  $("#mapCard").hide();
 
   //When mountain is clicked: prevent default button action, show table, run add row function
   $(".dropdown-item").on("click", function (e) {
@@ -12,17 +14,19 @@ $(document).ready(function () {
   });
 
   //Prepends new row to top of table with current view mountain info
-  function addRow() {
+  function addRow(temp, sky, resortName) {
+    console.log('why');
+    var mountainInfo = "<tr>" +
+    '<td>' + resortName + '</td><td>14:15</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' +
+    "</tr>";
     $("tbody").prepend(mountainInfo);
   };
 
   //Am trying to create variables that pull data to fill table but havent figured it out yet
-  var mountainInfo = "<tr>" +
-    '<td>Mountain</td><td>14:15</td><td>Cold</td>' +
-    "</tr>";
+ 
 
   //Get Weather data from openweathermap api
-  function getWeather(longitute, latitude) {
+  function getWeather(longitute, latitude, resortName) {
     var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
     var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -39,18 +43,20 @@ $(document).ready(function () {
       })
       .then(function (response) {
         $.each(response.weather, function () {
-
+          console.log('fired');
           //api returns a weather array that may have more than one item. Return length to get latest weather in array
           var arrayLength = response.weather.length
           arrayLength--;
           var temp = Math.round(response.main.temp);
+          var sky = response.weather[arrayLength].main;
           console.log(arrayLength);
           console.log(response);
 
           // Transfer content to HTML
           $("#temp").html("<img src=http://openweathermap.org/img/w/" + response.weather[0].icon + '.png>' + temp + '&deg;F');
           $("#wind").html("Wind Speed: " + response.wind.speed + ' mph');
-          $("#sky").html("Sky: " + response.weather[arrayLength].main);
+          $("#sky").html("Sky: " + sky);
+          addRow(temp, sky, resortName);
         });
       });
   };
@@ -122,10 +128,11 @@ $(document).ready(function () {
 
       
       $("#recentlyViewedTable").show();
-      $("#mountainSelector").click(addRow());
+      $("#weatherCard").show();
+      $("#mapCard").show();
   
       //Runs Weather and Resort functions
-      getWeather(longitude, latitude);
+      getWeather(longitude, latitude, resortName);
       getResortInfo(resortName);
 
     });
