@@ -60,7 +60,7 @@ $(document).ready(function () {
         });
       });
   };
-  //Get Ski Report information form onthesnow api
+  //Get Ski Report information from onthesnow api
   function getResortInfo(resortName) {
     var resortQueryURL = "https://skiapp.onthesnow.com/app/widgets/resortlist?region=us&regionids=251&language=en&pagetype=skireport&direction=+1"
 
@@ -76,9 +76,17 @@ $(document).ready(function () {
           var liftsOpen = resortResponse.rows[resortRow].snowcone.lifts_open;
           var totalLifts = resortResponse.rows[resortRow].resortProfile.num_lifts;
           var baseDepth = resortResponse.rows[resortRow].snowcone.base_depth_cm;
-          $("#lifts").html("Lifts Open: " + liftsOpen + '/' + totalLifts);
+          var runsOpen = resortResponse.rows[resortRow].snowcone.num_trails_slopes_open;
+          var runs = resortResponse.rows[resortRow].resortProfile.number_runs;
+          $("#lifts").html("Lifts Open: " + liftsOpen + ' of ' + totalLifts);
+          $("#runs").html("Runs Open: " + runsOpen + ' of ' + runs);
+
+          
           baseDepth = Math.round(parseInt(baseDepth) * 0.39370);
           $('#snowDepth').html("Snow Depth: " + baseDepth + "&#8243");
+          $('#weather').html(resortName)
+          console.log(resortResponse);
+          
         });
       });
   };
