@@ -14,9 +14,6 @@
        opacity:0.9;
    }
 
-   .navbar{
-    
-   }
 
    .img-theme{
     width: 100%;
@@ -26,5 +23,71 @@
 
   .btn{
       color: white;
-      background-color: blue;
+      background-color: darkblue;
+      font-size: 24px;
+      font-style: italic;
   }
+
+  #lifts{
+      color:darkblue;
+      font-size: 18px;
+      font-style: italic;
+      font-weight:600;
+  }
+
+  #runs{
+    color:darkblue;
+    font-size: 18px;
+    font-style: italic;
+    font-weight:600;
+}
+
+#snowDepth{
+    color:darkblue;
+    font-size: 18px;
+    font-style: italic;
+    font-weight:600;
+}
+
+#temp{
+    color:darkblue;
+    font-size: 50px;
+    font-style: italic;
+    font-weight:600;
+}
+
+#sky{
+    color:darkblue;
+    font-size: 18px;
+    font-style: italic;
+    font-weight:600;
+}
+
+#wind{
+    color:darkblue;
+    font-size: 18px;
+    font-style: italic;
+    font-weight:600;
+}
+
+#weather{
+    color:black;
+    font-size:25px;
+    font-style: italic;
+    font-weight:700;
+    
+}
+
+
+.table-responsive-sm{
+   font-size: 20px;
+   color:darkblue;
+   font-style: italic;
+}
+
+.card-header{
+    font-size: 30px;
+   color:darkblue;
+   font-style: italic;
+   font-weight:700;
+}
