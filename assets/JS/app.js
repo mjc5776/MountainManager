@@ -1,6 +1,5 @@
 //Wait to run until document is loaded
-$(document).ready(function () {
-
+// $(document).ready(function () {
 
   //Hides table from view until user selects a mountain
   $("#recentlyViewedTable").hide();
@@ -24,9 +23,13 @@ $(document).ready(function () {
 
   //Am trying to create variables that pull data to fill table but havent figured it out yet
  
+  
 
   //Get Weather data from openweathermap api
+
   function getWeather(longitute, latitude, resortName, liftsOpen) {
+    initMap(longitute, latitude);
+    
     var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
     var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -87,11 +90,10 @@ $(document).ready(function () {
           $('#snowDepth').html("Snow Depth: " + baseDepth + "&#8243");
           $('#weather').html(resortName)
           console.log(resortResponse);
-          getWeather(longitude, latitude, resortName, liftsOpen);
 
-          
+          getWeather(longitude, latitude, resortName, liftsOpen);
         });
-      });
+      })
   };
 
   var config = {
@@ -120,7 +122,6 @@ $(document).ready(function () {
     $(".dropdown-menu").append(newButton);
   })
 
-
   $(".dropdown-item").on("click", function () {
 
     var resortName = $(this).attr("resort-value");
@@ -136,13 +137,18 @@ $(document).ready(function () {
       //removed the JSON.stringify because it was adding "" to the value returned.
       var longitude =  (shot[resortName].longitude)
       var latitude = (shot[resortName].latitude)
-
+      myLng = (shot[resortName].longitude);
+      myLat = (shot[resortName].latitude);
+      console.log("myLat ...", myLat, latitude)
+      // createMarker(myLng, myLat);
       
       $("#recentlyViewedTable").show();
       $("#weatherCard").show();
       $("#mapCard").show();
   
       //Runs Weather and Resort functions
+
+      getWeather(longitude, latitude, resortName);
       getResortInfo(resortName, longitude, latitude);
 
     });
@@ -150,4 +156,72 @@ $(document).ready(function () {
 
   });
 
-})
+// })
+ //  This block of code shows users location on google maps.
+ var map, infoWindow;
+ var myLng, myLat;
+ function initMap(long, latt) {
+   map = new google.maps.Map(document.getElementById('map'), {
+     center: {lat: -34.397, lng: 150.644},
+     zoom: 10
+   });
+   infoWindow = new google.maps.InfoWindow;
+
+   // Try HTML5 geolocation.
+   if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(position) {
+       var pos = {
+         lat: position.coords.latitude,
+         lng: position.coords.longitude
+       };
+
+       infoWindow.setPosition(pos);
+       infoWindow.setContent('Location found.');
+       infoWindow.open(map);
+      //  map.setCenter(pos);
+      
+      
+      console.log(long, latt);
+      // createMarker(long, latt);
+      console.log("string or number???", typeof long)
+      var marker = new google.maps.Marker({
+        map: map,
+        position: {
+          lat: parseInt(latt),
+          lng: parseInt(long)
+        } 
+      });
+      marker.setMap(map);
+
+
+     }, function() {
+       console.log("browser is gucci for geoloc")
+       handleLocationError(true, infoWindow, map.getCenter());
+      //  createMarker(long, lat);
+     });
+   } else {
+     // Browser doesn't support Geolocation
+     handleLocationError(false, infoWindow, map.getCenter());
+   }
+ }
+
+ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+   infoWindow.setPosition(pos);
+   infoWindow.setContent(browserHasGeolocation ?
+                         'Error: The Geolocation service failed.' :
+                         'Error: Your browser doesn\'t support geolocation.');
+   infoWindow.open(map);
+ }
+
+
+ function createMarker(long, latt) {
+  console.log(long, latt)
+  var marker = new google.maps.Marker({
+      map: map,
+      position: {
+        lat: latt,
+        lng: long
+      } 
+    });
+    // map.setCenter(map)
+  }
