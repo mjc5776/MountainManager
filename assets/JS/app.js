@@ -13,10 +13,10 @@
   });
 
   //Prepends new row to top of table with current view mountain info
-  function addRow(temp, sky, resortName) {
+  function addRow(temp, sky, resortName, wind, liftsOpen) {
     console.log('why');
     var mountainInfo = "<tr>" +
-    '<td>' + resortName + '</td><td>14:15</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' +
+    '<td>' + resortName + '</td><td>14:15</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' + '<td>' + wind + " MPH" + '</td>' + '<td>' + liftsOpen + '</td>'
     "</tr>";
     $("tbody").prepend(mountainInfo);
   };
@@ -26,8 +26,10 @@
   
 
   //Get Weather data from openweathermap api
-  function getWeather(longitute, latitude, resortName) {
+
+  function getWeather(longitute, latitude, resortName, liftsOpen) {
     initMap(longitute, latitude);
+    
     var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
     var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather";
 
@@ -50,19 +52,20 @@
           arrayLength--;
           var temp = Math.round(response.main.temp);
           var sky = response.weather[arrayLength].main;
+          var wind = response.wind.speed;
           console.log(arrayLength);
           console.log(response);
 
           // Transfer content to HTML
           $("#temp").html("<img src=http://openweathermap.org/img/w/" + response.weather[0].icon + '.png>' + temp + '&deg;F');
-          $("#wind").html("Wind Speed: " + response.wind.speed + ' mph');
+          $("#wind").html("Wind Speed: " + wind + ' mph');
           $("#sky").html("Sky: " + sky);
-          addRow(temp, sky, resortName);
+          addRow(temp, sky, resortName, wind, liftsOpen);
         });
       });
   };
   //Get Ski Report information from onthesnow api
-  function getResortInfo(resortName) {
+  function getResortInfo(resortName, longitude, latitude) {
     var resortQueryURL = "https://skiapp.onthesnow.com/app/widgets/resortlist?region=us&regionids=251&language=en&pagetype=skireport&direction=+1"
 
     $.ajax({
@@ -87,7 +90,8 @@
           $('#snowDepth').html("Snow Depth: " + baseDepth + "&#8243");
           $('#weather').html(resortName)
           console.log(resortResponse);
-          // initMap();
+
+          getWeather(longitude, latitude, resortName, liftsOpen);
         });
       })
   };
@@ -143,12 +147,11 @@
       $("#mapCard").show();
   
       //Runs Weather and Resort functions
+
       getWeather(longitude, latitude, resortName);
-      getResortInfo(resortName);
-      // console.log("invoke creatMArker")
-      // createMarker(myLng, myLat);
-      // initMap();
-    })
+      getResortInfo(resortName, longitude, latitude);
+
+    });
 
 
   });
