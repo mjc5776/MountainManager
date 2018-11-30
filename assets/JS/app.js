@@ -13,10 +13,9 @@
   });
 
   //Prepends new row to top of table with current view mountain info
-  function addRow(temp, sky, resortName, wind, liftsOpen) {
-    console.log('why');
+  function addRow(temp, sky, resortName, wind, liftsOpen, runsOpen) {
     var mountainInfo = "<tr>" +
-    '<td>' + resortName + '</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' + '<td>' + wind + " MPH" + '</td>' + '<td>' + liftsOpen + '</td>'
+    '<td>' + resortName + '</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' + '<td>' + wind + " MPH" + '</td>' + '<td>' + liftsOpen + '</td>' + '<td>' + runsOpen + '</td>'
     "</tr>";
     $("tbody").prepend(mountainInfo);
   };
@@ -26,8 +25,11 @@
   
 
   //Get Weather data from openweathermap api
+  var temp 
+  var sky 
+  var wind 
 
-  function getWeather(longitute, latitude, resortName, liftsOpen) {
+  function getWeather(longitute, latitude, resortName, liftsOpen, runsOpen) {
     initMap(longitute, latitude);
     
     var weatherKey = 'f62f99a69c9512347f2e5f3f3278d67f';
@@ -50,9 +52,9 @@
           //api returns a weather array that may have more than one item. Return length to get latest weather in array
           var arrayLength = response.weather.length
           arrayLength--;
-          var temp = Math.round(response.main.temp);
-          var sky = response.weather[arrayLength].main;
-          var wind = response.wind.speed;
+          temp = Math.round(response.main.temp);
+          sky = response.weather[arrayLength].main;
+          wind = response.wind.speed;
           console.log(arrayLength);
           console.log(response);
 
@@ -60,9 +62,11 @@
           $("#temp").html("<img src=http://openweathermap.org/img/w/" + response.weather[0].icon + '.png>' + temp + '&deg;F');
           $("#wind").html("Wind Speed: " + wind + ' mph');
           $("#sky").html("Sky: " + sky);
-          addRow(temp, sky, resortName, wind, liftsOpen);
+         
         });
+        addRow(temp, sky, resortName, wind, liftsOpen, runsOpen);
       });
+      
   };
   //Get Ski Report information from onthesnow api
   function getResortInfo(resortName, longitude, latitude) {
@@ -91,7 +95,7 @@
           $('#weather').html(resortName)
           console.log(resortResponse);
 
-          getWeather(longitude, latitude, resortName, liftsOpen);
+          getWeather(longitude, latitude, resortName, liftsOpen, runsOpen);
         });
       })
   };
