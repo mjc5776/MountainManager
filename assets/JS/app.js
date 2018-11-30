@@ -16,7 +16,7 @@
   function addRow(temp, sky, resortName, wind, liftsOpen) {
     console.log('why');
     var mountainInfo = "<tr>" +
-    '<td>' + resortName + '</td><td>14:15</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' + '<td>' + wind + " MPH" + '</td>' + '<td>' + liftsOpen + '</td>'
+    '<td>' + resortName + '</td><td>' + temp + '&deg;F' + '  ' + sky + '</td>' + '<td>' + wind + " MPH" + '</td>' + '<td>' + liftsOpen + '</td>'
     "</tr>";
     $("tbody").prepend(mountainInfo);
   };
@@ -148,7 +148,7 @@
   
       //Runs Weather and Resort functions
 
-      getWeather(longitude, latitude, resortName);
+      //getWeather(longitude, latitude, resortName);
       getResortInfo(resortName, longitude, latitude);
 
     });
@@ -163,7 +163,7 @@
  function initMap(long, latt) {
    map = new google.maps.Map(document.getElementById('map'), {
      center: {lat: -34.397, lng: 150.644},
-     zoom: 10
+     zoom: 8
    });
    infoWindow = new google.maps.InfoWindow;
 
@@ -203,6 +203,9 @@
      // Browser doesn't support Geolocation
      handleLocationError(false, infoWindow, map.getCenter());
    }
+
+   var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
  }
 
  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
